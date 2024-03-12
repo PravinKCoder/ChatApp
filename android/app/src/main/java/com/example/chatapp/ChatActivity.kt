@@ -1,6 +1,7 @@
 package com.example.chatapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatapp.databinding.ActivityMainBinding
@@ -48,6 +49,7 @@ class ChatActivity : AppCompatActivity() {
 
             socketHandler.onNewChat.observe(this) {
                 val chat = it.copy(isSelf = it.username == userName)
+                Log.d("DATADEBUG","$chat")
                 chatList.add(chat)
                 chatAdapter.submitChat(chatList)
                 binding.rvChat.scrollToPosition(chatList.size - 1)

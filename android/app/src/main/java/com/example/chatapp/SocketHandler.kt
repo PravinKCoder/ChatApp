@@ -34,6 +34,8 @@ class SocketHandler {
                    val data = d[0]
                    Log.d("DATADEBUG","$data")
                    if (data.toString().isNotEmpty()) {
+                       val jsonString = "{\"id\":0,\"isSelf\":false,\"text\":\"hii\",\"username\":\"jay\"}"
+
                        val chat = Gson().fromJson(data.toString(), Chat::class.java)
                        _onNewChat.postValue(chat)
                    }
@@ -60,7 +62,7 @@ class SocketHandler {
     }
 
     companion object{
-        private const val SOCKET_URL = "http://10.0.2.2:3000/"
+        private const val SOCKET_URL = "http://192.168.164.8:3000/"
     }
 
 }
